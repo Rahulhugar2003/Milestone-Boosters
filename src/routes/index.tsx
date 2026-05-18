@@ -44,11 +44,11 @@ function Nav() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/40">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2 font-extrabold text-xl tracking-tight">
-          <span className="w-10 h-10 rounded-2xl bg-gradient-cta grid place-items-center text-primary-foreground shadow-soft">
+        <a href="#" className="flex items-center gap-2 font-extrabold text-lg sm:text-xl tracking-tight">
+          <span className="w-10 h-10 rounded-2xl bg-gradient-cta grid place-items-center text-primary-foreground shadow-soft shrink-0">
             <Compass className="w-5.5 h-5.5 text-white" />
           </span>
-          <span className="bg-gradient-to-r from-slate-900 to-sky-700 bg-clip-text text-transparent dark:from-white dark:to-sky-300">
+          <span className="bg-gradient-to-r from-slate-900 to-sky-700 bg-clip-text text-transparent dark:from-white dark:to-sky-300 truncate">
             Milestone Boosters
           </span>
         </a>
@@ -65,7 +65,7 @@ function Nav() {
         <div className="flex items-center gap-3">
           <a
             href="#contact"
-            className="text-sm font-extrabold px-6 py-3 rounded-full bg-gradient-cta text-primary-foreground shadow-soft hover:scale-[1.03] active:scale-[0.98] transition-all duration-200"
+            className="hidden sm:inline-flex text-sm font-extrabold px-6 py-3 rounded-full bg-gradient-cta text-primary-foreground shadow-soft hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 animate-fade-in"
           >
             Get in Touch
           </a>
@@ -85,7 +85,7 @@ function Nav() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-border/40 bg-card/95 backdrop-blur-md px-6 py-4 space-y-3"
+            className="lg:hidden border-t border-border/40 bg-white/98 dark:bg-slate-900/98 shadow-xl px-6 py-4 space-y-3 relative z-50 backdrop-blur-lg"
           >
             <a href="#why-matters" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-semibold text-muted-foreground hover:text-primary">Why It Matters</a>
             <a href="#infrastructure" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-semibold text-muted-foreground hover:text-primary">OS Infrastructure</a>
@@ -93,6 +93,16 @@ function Nav() {
             <a href="#interactive-suite" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-semibold text-muted-foreground hover:text-primary">Interactive Suite</a>
             <a href="#services" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-semibold text-muted-foreground hover:text-primary">Services</a>
             <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block py-2 font-semibold text-muted-foreground hover:text-primary">Contact</a>
+            
+            <div className="pt-2 sm:hidden">
+              <a
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full text-center block text-sm font-extrabold py-3 rounded-full bg-gradient-cta text-primary-foreground shadow-soft hover:opacity-95 active:scale-[0.98] transition-all duration-200"
+              >
+                Get in Touch
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -241,9 +251,9 @@ function Hero() {
               height={1024}
               className="relative z-10 w-full h-full object-contain"
             />
-            <FloatingCard image={cardDiagnosis} title="Discovery Points" sub="Assessments & Tests" className="left-0 top-12 z-20" delay={0.3} />
-            <FloatingCard image={cardReports} title="Booster Pathways" sub="Dynamic Intervention" className="right-0 top-[58%] z-20" delay={0.6} />
-            <FloatingCard image={cardInsights} title="Skill Milestones" sub="Progress Tracking" className="left-8 bottom-4 z-20" delay={0.9} />
+            <FloatingCard image={cardDiagnosis} title="Discovery Points" sub="Assessments & Tests" className="hidden md:flex left-0 top-12 z-20" delay={0.3} />
+            <FloatingCard image={cardReports} title="Booster Pathways" sub="Dynamic Intervention" className="hidden md:flex right-0 top-[58%] z-20" delay={0.6} />
+            <FloatingCard image={cardInsights} title="Skill Milestones" sub="Progress Tracking" className="hidden md:flex left-8 bottom-4 z-20" delay={0.9} />
           </div>
         </motion.div>
       </div>
@@ -299,7 +309,7 @@ function WhyItMatters() {
           className="max-w-3xl mx-auto text-center"
         >
 
-          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight break-keep">
             Why Milestone Boosters Matters?
           </h2>
           <p className="mt-4 text-base md:text-lg text-slate-600 leading-relaxed">
@@ -448,7 +458,7 @@ function InfrastructureLayers() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900">
+          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 break-keep">
             Five Layers of Milestone Boosters OS
           </h2>
           <p className="mt-4 text-base md:text-lg text-slate-600">
@@ -478,7 +488,7 @@ function InfrastructureLayers() {
                     <span className={`text-xs font-extrabold uppercase px-2 py-0.5 rounded ${layer.badgeColor}`}>
                       Layer {layer.id}
                     </span>
-                    <h3 className="font-extrabold text-slate-800 text-sm md:text-base mt-1 truncate">
+                    <h3 className="font-extrabold text-slate-800 text-sm md:text-base mt-1 whitespace-normal md:truncate">
                       {layer.title}
                     </h3>
                   </div>
@@ -759,7 +769,7 @@ function AccessPointsDashboard() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight break-keep">
             Your Guided Access Points
           </h2>
           <p className="mt-4 text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
@@ -960,7 +970,7 @@ function InteractiveSuite() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight break-keep">
             Milestone Boosters Interactive Suite
           </h2>
           <p className="mt-4 text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
@@ -972,7 +982,7 @@ function InteractiveSuite() {
         <div className="mt-16 bg-white border border-slate-200/80 rounded-[2.5rem] shadow-card overflow-hidden grid lg:grid-cols-12 items-stretch max-w-6xl mx-auto">
 
           {/* Shell Sidebar */}
-          <div className="lg:col-span-4 bg-slate-50 border-r border-slate-100 p-8 flex flex-col justify-between">
+          <div className="lg:col-span-4 bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200/60 p-8 flex flex-col justify-between">
             <div>
               <h4 className="font-extrabold text-slate-800 text-lg mb-6">Select Experience</h4>
 
@@ -1187,7 +1197,7 @@ function Services() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900">
+          <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 break-keep">
             Our Services & Portfolios
           </h2>
           <p className="mt-4 text-base md:text-lg text-slate-600">
@@ -1288,7 +1298,7 @@ function ContactSection() {
           {/* Contact Details */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
-              <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900">
+              <h2 className="mt-5 text-3xl md:text-5xl font-black tracking-tight text-slate-900 break-keep">
                 Contact Us
               </h2>
               <p className="mt-4 text-base text-slate-600 leading-relaxed">
